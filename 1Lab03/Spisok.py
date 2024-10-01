@@ -1,1 +1,0 @@
-loc_list = open('loc_list.txt', 'r+')
