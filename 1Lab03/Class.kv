@@ -1,0 +1,64 @@
+WinMan:
+    CityRoot:
+        name: "CityRoot"
+    NewLocation:
+        name: "NewLocation"
+
+<CityRoot>:
+    name: "CityRoot"
+    search_input: search_input
+    results_list: results_list
+    orientation: "vertical"
+    search_input: search_box
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None
+        TextInput:
+            id: search_box
+            size_hint_x: 50
+            multiline: False
+        Button:
+            text: "Search"
+            size_hint_x: 25
+            on_release:
+                root.search_list()
+        Button:
+            text: "NewLocation"
+            size_hint_x: 25
+            on_press:
+                self.root.current = 'NewLocation'
+                root.manager.transition.direction = "up"
+    GridLayout:
+        cols: 1
+        row_default_height: 40
+        id: results_list
+
+<NewLocation>:
+    name: "NewLocation"
+    orientation: "vertical"
+    add_input: add_input
+    add_input: add_box
+    add_list: add_list
+
+    BoxLayout:
+        height: "40dp"
+        size_hint_y: None
+        TextInput:
+            id: add_box
+            size_hint_x: 50
+            multiline: False
+        Button:
+            text: "Add"
+            size_hint_x: 50
+            on_press:
+                root.add_to_list()
+        Button:
+            text: "Back"
+            size_hint_x: 50
+            on_press:
+                app.root.current = "CityRoot"
+                root.manager.transition.direction = "down"
+    GridLayout:
+        cols: 1
+        row_default_height: 40
+        id: add_list
